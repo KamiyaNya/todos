@@ -1,0 +1,18 @@
+<nav style="padding: 0 20px;">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">TODOS</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {{#if isIndex}}
+            <li class="active"><a href="/">Главная</a></li>
+            {{else}}
+            <li><a href="/">Главная</a></li>
+            {{/if}}
+
+            {{#if isCreate}}
+            <li class="active"><a href="/create">Добавить задачу</a></li>
+            {{else}}
+            <li><a href="/create">Добавить задачу</a></li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>

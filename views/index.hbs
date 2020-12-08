@@ -1,0 +1,28 @@
+<h2>Список дел</h2>
+
+{{#if todosss.length}}
+<ul>
+    {{#each todosss}}
+    <li class="todo">
+        <form action="/complete" method="POST">
+            <label>
+                {{#if completed}}
+                <input type="checkbox" checked />
+                <span class="completedd">{{ title }}</span>
+                {{else}}
+                <input type="checkbox" />
+                <span>{{title}}</span>
+                {{/if}}
+
+                <input type="hidden" value="{{_id}}" name="id">
+
+                <button class="btn btn-small" type="submit">Сохранить</button>
+            </label>
+        </form>
+    </li>
+
+    {{/each}}
+</ul>
+{{else}}
+<h5>Задач нету</h5>
+{{/if}}
