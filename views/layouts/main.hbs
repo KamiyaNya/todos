@@ -5,8 +5,18 @@
     <div class="container">
         {{{body}}}
     </div>
-
-
+    <script>
+        const menuBtn = document.querySelector('.btnnnn');
+        const closeBtn = document.querySelector('#closeBtn');
+        menuBtn.addEventListener('click', () => {
+            const menu = document.querySelector('.mobile-menu');
+            menu.classList.toggle('active2');
+        });
+        closeBtn.addEventListener('click', () => {
+            const menu = document.querySelector('.mobile-menu');
+            menu.classList.remove('active2');
+        });
+    </script>
 </body>
 
 </html>
