@@ -19,3 +19,67 @@
 .todo i {
     z-index: 2;
 }
+
+body {
+    position: relative;
+}
+
+
+
+.mobile-menu {
+    display: block;
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px;
+    background: rgb(231, 223, 223);
+    position: absolute;
+    left: -201px;
+    top: 50px;
+    z-index: 10;
+    transition: all .5s ease;
+
+}
+
+.mobile-menu li {
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 100%;
+}
+
+#closeBtn {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.mobile-menu li a {
+    color: #fff;
+
+}
+
+
+.active2 {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 50px;
+    transition: all .5s ease-in-out;
+}
+
+@media screen and (max-width:601px) {
+    .mobile-menu {
+        top: 42px;
+    }
+
+    .active2 {
+        left: 0;
+        top: 42px;
+
+    }
+}
