@@ -1,7 +1,8 @@
-<nav style="padding: 0 20px;">
+<nav style="padding: 0 20px;" class="light-blue accent-2">
     <div class="nav-wrapper">
         <a href="/" class="brand-logo">TODOS</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <a class="sidenav-trigger btnnnn"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
             {{#if isIndex}}
             <li class="active"><a href="/">Главная</a></li>
             {{else}}
@@ -16,3 +17,8 @@
         </ul>
     </div>
 </nav>
+<ul class="mobile-menu light-blue accent-2 z-depth-2">
+    <li class='waves-effect waves-light btn-small light-blue lighten-3'><a href="/">Главная</a></li>
+    <li class='waves-effect waves-light btn-small light-blue lighten-3'><a href="/create">Добавить задачу</a></li>
+    <button class="waves-effect waves-light btn btn-small light-blue lighten-3" id='closeBtn'>Закрыть</button>
+</ul>
