@@ -11,13 +11,16 @@
                 <span class="completedd">{{ title }}</span>
                 {{else}}
                 <input type="checkbox" />
-                <span>{{title}}</span>
+                <span>{{ title }}</span>
                 {{/if}}
 
                 <input type="hidden" value="{{_id}}" name="id">
-
                 <button class="btn btn-small" type="submit">Сохранить</button>
             </label>
+        </form>
+        <form action="delete" method="POST">
+            <input type="hidden" value="{{_id}}" name="id">
+            <button class="btn btn-small" type="submit" name="delete">Удалить</button>
         </form>
     </li>
 

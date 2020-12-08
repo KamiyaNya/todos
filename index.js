@@ -18,14 +18,13 @@ app.set('views', 'views')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.json())
 app.use(router)
 
 const start = async () => {
     try {
         await mongoose.connect(config.dbURL, {
             useNewUrlParser: true,
-            useFindAndModify: false
+            useFindAndModify: false, useUnifiedTopology: true
         })
 
         app.listen(port, () => {
