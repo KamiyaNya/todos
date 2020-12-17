@@ -1,11 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
-const config = require('./config.json')
 const router = require('./routes/todosRoute')
 const path = require('path')
 
-const port = config.PORT
+const port = process.env.PORT || 4000
 
 const app = express()
 
@@ -22,7 +21,7 @@ app.use(router)
 
 const start = async () => {
     try {
-        await mongoose.connect(config.dbURL, {
+        await mongoose.connect("", {
             useNewUrlParser: true,
             useFindAndModify: false, useUnifiedTopology: true
         })
