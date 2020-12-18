@@ -1,4 +1,6 @@
-const { Router } = require('express')
+const {
+    Router
+} = require('express')
 const Todo = require('../model/Todo')
 const router = Router()
 
@@ -33,7 +35,9 @@ router.post("/complete", async (req, res) => {
 })
 router.post('/delete', async (req, res) => {
     const todo = await Todo.findOne(req.body.title)
-    await todo.remove({ title: todo })
+    await todo.remove({
+        title: todo
+    })
     res.redirect('/')
 })
 
