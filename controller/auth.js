@@ -7,7 +7,8 @@ module.exports.login = async function (req, res) {
     try {
         const userEmail = req.body.email
         const password = req.body.password
-
+        console.log(userEmail)
+        console.log(password)
         const user = await User.findOne({
             email: userEmail
         })
@@ -16,7 +17,7 @@ module.exports.login = async function (req, res) {
                 message: 'Такого пользователя не существует'
             })
         }
-        const validPass = bcrypt.compareSync(password, user.password)
+        const validPass = await bcrypt.compareSync(password, user.password)
         if (!validPass) {
             res.status(401).send(`<p>Пароль не совпал <a href="/">Вернуться</a></p>`)
         }
@@ -26,9 +27,8 @@ module.exports.login = async function (req, res) {
         }, secretKey, {
             expiresIn: '1h'
         })
-        res.status(200).json({
-            token: token
-        })
+
+        console.log(token)
     } catch (e) {
         console.log(e)
     }
