@@ -1,4 +1,4 @@
 {
-  PORT: 4000
-  dbUrl: ""
+  "PORT": 4000,
+  "dbUrl": "mongodb+srv://Kamiya:31082001Kamiya_Nya@todos.1nxqm.mongodb.net/todos?retryWrites=true&w=majority"
 }
