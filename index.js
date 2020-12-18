@@ -7,8 +7,9 @@ const path = require('path')
 
 const port = process.env.PORT || 4000
 const dbURL = config.dbUrl
-const app = express()
 
+const app = express()
+app.use(require('cors')())
 const hbs = exphbs.create({
     extname: 'hbs'
 })
@@ -27,7 +28,8 @@ const start = async () => {
         await mongoose.connect(dbURL, {
             useNewUrlParser: true,
             useFindAndModify: false,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useCreateIndex: true
         })
 
         app.listen(port, () => {

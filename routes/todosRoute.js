@@ -1,10 +1,33 @@
+const express = require('express')
 const {
-    Router
-} = require('express')
+    check
+} = require('express-validator')
+const controller = require('../controller/auth')
 const Todo = require('../model/Todo')
-const router = Router()
+const router = express()
 
-router.get("/", async (req, res) => {
+router.use(express.urlencoded({
+    extended: true
+}))
+router.get('/', (req, res) => {
+    res.render('login', {
+        title: "Авторизация"
+    })
+})
+router.get('/register', (req, res) => {
+    res.render('register', {
+        title: "Регистрация"
+    })
+})
+router.post("/", controller.login)
+router.post("/register", [
+    check('email').isEmail(),
+    check('password').isLength({
+        min: 4
+    })
+], controller.register)
+
+router.get("/posts", async (req, res) => {
     const todosss = await Todo.find({}).lean()
     res.render('index', {
         title: "Главная",
@@ -12,6 +35,7 @@ router.get("/", async (req, res) => {
         todosss
     })
 })
+
 router.get("/create", (req, res) => {
     res.render('create', {
         title: "Добавить задачу",

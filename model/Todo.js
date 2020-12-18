@@ -1,6 +1,9 @@
-const { Schema, model } = require('mongoose')
+const {
+    Schema,
+    model
+} = require('mongoose')
 
-const schema = new Schema({
+const post = new Schema({
     title: {
         type: String,
         required: true,
@@ -8,7 +11,11 @@ const schema = new Schema({
     completed: {
         type: Boolean,
         default: false
+    },
+    users: {
+        ref: 'user',
+        type: Schema.Types.ObjectId
     }
 })
 
-module.exports = model('Todo', schema)
+module.exports = model('Todo', post)
