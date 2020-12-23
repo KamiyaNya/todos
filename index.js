@@ -1,15 +1,21 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
+const passport = require('passport')
+const cookieParser = require('cookie-parser')
 const router = require('./routes/todosRoute')
 const config = require('./config.json')
 const path = require('path')
 
+const app = express()
+
 const port = process.env.PORT || 4000
 const dbURL = config.dbUrl
-
-const app = express()
+app.use(cookieParser())
 app.use(require('cors')())
+require('./middleware/passport')(passport)
+app.use(passport.initialize())
+app.use(passport.session())
 const hbs = exphbs.create({
     extname: 'hbs'
 })
@@ -20,7 +26,9 @@ app.set('views', 'views')
 app.use(express.urlencoded({
     extended: true
 }))
+app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
+
 app.use(router)
 
 const start = async () => {
